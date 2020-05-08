@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>PWA Starter</title>
+  <title>Ninja Food</title>
 
   <base href="/">
 
@@ -19,20 +19,119 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
   <!-- Imports an icon to represent the document. -->
-  <link rel="icon" href="asset/icons/icon_24.png" type="image/x-icon">
+  <link rel="icon" href="src/asset/icons/icon_24.png" type="image/x-icon">
 
   <!-- Imports the manifest to represent the web application. A web app must have a manifest to be a PWA. -->
   <link rel="manifest" href="manifest.json">
 
   <!-- A stylesheet to design the pages. -->
   <link href="src/global.css" rel="stylesheet">
+  <!-- materialize icons, css & js -->
+  <link type="text/css" href="src/css/materialize.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link type="text/css" href="src/css/styles.css" rel="stylesheet">
+  <script type="text/javascript" src="src/script//materialize.min.js"></script>
 
   <script type="module" src="build/script/pages/app-index.js"></script>
 </head>
 
-<body>
+<body class="grey lighten-4">
+  
   <!-- Our app-index web component. This component is defined in src/pages/app-index.ts-->
-  <app-index></app-index>
+  <!--<app-index></app-index> -->
+
+  <!-- top nav -->
+  <nav class="z-depth-0">
+    <div class="nav-wrapper container">
+      <a href="/">Food<span>Ninja</span></a>
+      <span class="right grey-text text-darken-1">
+        <i class="material-icons sidenav-trigger" data-target="side-menu">menu</i>
+      </span>
+    </div>
+  </nav>
+
+  <!-- side nav -->
+  <ul id="side-menu" class="sidenav side-menu">
+    <li><a class="subheader">FOODNINJA</a></li>
+    <li><a href="/" class="waves-effect">Home</a></li>
+    <li><a href="src/app/pages/about.html" class="waves-effect">About</a></li>
+    <li><div class="divider"></div></li>
+    <li><a href="src/app/pages/contact.html" class="waves-effect">
+      <i class="material-icons">mail_outline</i>Contact</a>
+    </li>
+  </ul>
+
+  <!-- recipes -->
+  <div class="recipes container grey-text text-darken-1">
+    <div class="card-panel recipe white row">
+      <img src="src/assets/images/dish.png" alt="recipe thumb">
+      <div class="recipe-details">
+        <div class="recipe-title">Edame Noodles</div>
+        <div class="recipe-ingredients">Edame Beans, Noodels, Garlic oil</div>
+      </div>
+      <div class="recipe-delete">
+        <i class="material-icons">delete_outline</i>
+      </div>
+    </div>
+    <div class="card-panel recipe white row">
+      <img src="src/assets/images/dish.png" alt="recipe thumb">
+      <div class="recipe-details">
+        <div class="recipe-title">Edame Noodles</div>
+        <div class="recipe-ingredients">Edame Beans, Noodels, Garlic oil</div>
+      </div>
+      <div class="recipe-delete">
+        <i class="material-icons">delete_outline</i>
+      </div>
+    </div>
+    <div class="card-panel recipe white row">
+      <img src="src/assets/images/dish.png" alt="recipe thumb">
+      <div class="recipe-details">
+        <div class="recipe-title">Edame Noodles</div>
+        <div class="recipe-ingredients">Edame Beans, Noodels, Garlic oil</div>
+      </div>
+      <div class="recipe-delete">
+        <i class="material-icons">delete_outline</i>
+      </div>
+    </div>
+    <div class="card-panel recipe white row">
+      <img src="src/assets/images/dish.png" alt="recipe thumb">
+      <div class="recipe-details">
+        <div class="recipe-title">Edame Noodles</div>
+        <div class="recipe-ingredients">Edame Beans, Noodels, Garlic oil</div>
+      </div>
+      <div class="recipe-delete">
+        <i class="material-icons">delete_outline</i>
+      </div>
+    </div>
+  </div>
+
+  <div class="center">
+    <a class="btn-floating btn-small btn-large add-btn sidenav-trigger" data-target="side-form">
+      <i class="material-icons">add</i>
+    </a>
+  </div>
+
+  <!-- add recipe side nav -->
+  <div id="side-form" class="sidenav side-form">
+    <form class="add-recipe container section">
+      <h6 >New Recipe</h6>
+      <div class="divider"></div>
+      <div class="input-field">
+        <input placeholder="e.g. Ninja soup" id="title" type="text" class="validate">
+        <label for="title">Recipe Title</label>
+      </div>
+      <div class="input-field">
+        <input placeholder="e.g. Tofu, mushroom, garlic" id="ingredients" type="text" class="validate">
+        <label for="ingredients">Ingredients</label>
+      </div>
+      <div class="input-field center">
+        <button class="btn-small">Add</button>
+      </div>
+    </form>
+  </div>
+
+  <script src="src/script/ui.js"></script>
+
 </body>
 
 </html>
