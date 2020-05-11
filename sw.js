@@ -1,4 +1,5 @@
 const staticCacheName = 'site-static-v2';
+const dynamicCache = 'site-dynamic-v1';
 const assets = [
   '/',
   '/index.html',
@@ -10,8 +11,6 @@ const assets = [
   '/src/assets/images/dish.png',
   'https://fonts.googleapis.com/icon?family=Material+Icons',
   'https://fonts.gstatic.com/s/materialicons/v50/flUhRq6tzZclQEJ-Vdg-IuiaDsNcIhQ8tQ.woff2',
-  '/src/app/pages/about.html',
-  '/src/app/pages/contact.html'
 ];
 
 // install service worker
@@ -47,7 +46,13 @@ self.addEventListener('fetch', event => {
   // console.log('fetch event', event);
   event.respondWith(
     caches.match(event.request).then(cacheRes => {
-      return cacheRes || fetch(event.request);
+      return cacheRes || fetch(event.request).then(fetchRes => {
+        /** Dynamic caching */
+        return caches.open(dynamicCache).then(cache => {
+          cache.put(event.request.url, fetchRes.clone());
+          return fetchRes;
+        })
+      });
     })
   )
 })
